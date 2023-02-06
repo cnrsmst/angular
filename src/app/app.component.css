@@ -35,22 +35,7 @@
 }
 
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-
-
-body {
-    height: 100vh;
-    margin: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #F5F5F5;
-}
 
 .deneme {
     padding-top: 2rem;
