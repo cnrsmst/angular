@@ -1,14 +1,13 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 
-export class Heroes {
+export class Users {
 
   constructor(
 
     public id:number,
-    public name:string,
-    public surnmae:string,
-    public nickname:string
+    public email:string,
+    public password:string
 
 
   ) {
@@ -24,25 +23,43 @@ export class Heroes {
 
 
 export class AppComponent implements OnInit{
+  
+ 
 
-  heroes: Heroes[] | undefined;
+  title(title: any) {
+    throw new Error('Method not implemented.');
+  }
+
+  
+
+  users: Users[] | undefined;
   constructor(
     private httpClient : HttpClient
   ) {
 
+   
+
   }
+  
   ngOnInit(): void {
-    this.getHeroes();
+    this.getUsers();
+    
+    
   }
+  create(user:Users){
+    this.httpClient.post("http://localhost:3000/users",user).subscribe();
+    
+     
+ }
 
-  getHeroes(){
+  getUsers(){
 
-    this.httpClient.get<any>("http://localhost:3000/heroes").subscribe(
+    this.httpClient.get<any>("http://localhost:3000/users").subscribe(
 
 
     response => {
       console.log(response);
-      this.heroes = response;
+      this.users = response;
     }
     );
   }

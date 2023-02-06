@@ -39,21 +39,36 @@ body {
 
 </head>
 <body>
+    
     <div class="login">
+
+       <thead>
+        <tr>
+            <th>Email</th>
+            <th>Password</th>
+        </tr>
+       </thead>
+       <tbody>
+        <td *ngFor="let user of users">{{user.email}}</td>
+        <td *ngFor="let user of users">{{user.password}}</td>
+       </tbody>
+        
+
+      
 
         <img src="assets/logo.png/" alt="">
 
         <p class="text-start">Hoşgeldiniz</p>
 
-        <form class="needs-validation">
+        <form class="needs-validation" #usersForm="ngForm" (ngSubmit)="create(usersForm.value)">
             <div class="form-group">
                 <p class="form-label deneme" for="email">E-Posta</p>
-                <input class="form-control" type="email" id="email">
+                <input class="form-control" type="email" id="email" name="email" ngModel>
 
             </div>
             <div class="form-group">
                 <p class="form-label" for="password">Şifre</p>
-                <input class="form-control" type="password" id="password">
+                <input class="form-control" type="password" id="password" name="password" ngModel>
 
             </div>
             <div class="form-group check-field">
@@ -66,7 +81,7 @@ body {
                     <a href="">Şifremi Unuttum</a>
                 </div>
             </div>
-            <button >Giriş Yap</button>
+            <button type="submit" >Giriş Yap</button>
             <div class="son">
                 Giriş yaparak <b>Gizlilik Politikaları</b> sözleşmesi ile <b>Şartlar&Kurallar</b> sözleşmesini kabul
                 etmiş olursunuz
